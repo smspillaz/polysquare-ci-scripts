@@ -12,8 +12,9 @@ before_install:
  - eval "$(bash ~/container/_scripts/bootstrap.sh -d ~/container -s setup/shell/setup.sh)"
  # For now
  - source ~/container/_scripts/haskell-util.sh
- - polysquare_task "Installing pandoc" polysquare_run_if_unavailable pandoc \
-   polysquare_cabal_install_binary pandoc
+ - eval "$(polysquare_task \"Installing pandoc\" \
+           polysquare_run_if_unavailable pandoc \
+           polysquare_cabal_install_binary pandoc)"
 script:
  - polysquare_run_check_script check/shell/check.sh -d travis -d tests
  - polysquare_run_deploy_script deploy/shell/deploy.sh -d ~/container
